@@ -1,36 +1,182 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# HELP STUDY ABROAD – Frontend Technical Assessment
 
-## Getting Started
+This project is a frontend technical assessment built using **Next.js (App Router)**, **Material-UI (MUI)**, **Zustand**, and **DummyJSON public APIs**.
 
-First, run the development server:
+The objective of this assignment is to demonstrate authentication, protected routes, REST API integration, pagination, filtering, state management, and clean responsive UI.
 
+---
+
+## 🚀 Tech Stack
+
+- Next.js 14 (App Router)
+- React 18
+- Material-UI (MUI)
+- Zustand (State Management)
+- Axios
+- DummyJSON Public API
+
+---
+
+## 📂 Project Structure
+
+src/
+├── app/
+│ ├── page.tsx # Login page
+│ ├── dashboard/
+│ │ ├── layout.tsx # Protected dashboard layout
+│ │ ├── users/
+│ │ │ ├── page.tsx # Users list
+│ │ │ └── [id]/page.tsx # User detail page
+│ │ ├── products/
+│ │ │ ├── page.tsx # Products list
+│ │ │ └── [id]/page.tsx # Product detail page
+├── store/
+│ ├── authStore.ts # Auth state
+│ ├── userStore.ts # Users state
+│ └── productStore.ts # Products state
+├── components/
+│ └── ProtectedRoute.tsx # Route protection
+
+## 🔐 Authentication
+
+- Authentication is implemented using DummyJSON Auth API:
+- POST https://dummyjson.com/auth/login
+
+
+- Token is stored in **Zustand** and persisted in **localStorage**
+- Authenticated users are redirected to dashboard
+- Dashboard routes are protected via `ProtectedRoute`
+
+> Note: Due to time constraints, authentication is implemented using Zustand-based token handling instead of NextAuth. Core auth concepts are fully demonstrated.
+
+---
+
+## 👥 Users Module
+
+### APIs Used
+- List Users  
+  `GET https://dummyjson.com/users?limit=10&skip=0`
+- Search Users  
+  `GET https://dummyjson.com/users/search?q=...`
+- Single User  
+  `GET https://dummyjson.com/users/{id}`
+
+### Features
+- Pagination
+- Search functionality
+- Responsive MUI table layout
+- User detail page with full information
+
+---
+
+## 📦 Products Module
+
+### APIs Used
+- Products list  
+  `GET https://dummyjson.com/products?limit=10&skip=0`
+- Search products  
+  `GET https://dummyjson.com/products/search?q=...`
+- Product details  
+  `GET https://dummyjson.com/products/{id}`
+
+### Features
+- Pagination
+- Search bar
+- Category filter
+- Responsive card-based UI
+- Product detail page with images and description
+
+---
+
+## 🧠 State Management (Zustand)
+
+Zustand is used for:
+- Authentication state
+- Users data
+- Products data
+
+### Why Zustand?
+- Minimal boilerplate
+- Built-in async actions
+- Better suited than Redux for small–medium apps
+- Clean and maintainable code
+
+---
+
+## ⚡ Performance & Optimization
+
+- API-side pagination to reduce data load
+- Memoization (`useMemo`, `useCallback`) where applicable
+- Cached API responses inside Zustand store
+
+### Caching Benefits
+- Fewer API calls
+- Faster navigation
+- Better user experience
+
+---
+
+## 🎨 UI / UX
+
+- Fully built using Material-UI
+- Responsive layout for:
+  - Login
+  - Dashboard
+  - Users
+  - Products
+  - Detail pages
+- Clean admin dashboard design
+
+---
+
+## 🛠️ Setup & Installation
+
+### 1️⃣ Clone the Repository
 ```bash
+git clone https://github.com/your-username/help-study-abroad-frontend.git
+cd help-study-abroad-frontend
+
+2️⃣ Install Dependencies
+npm install
+
+3️⃣ Run Development Server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Open in browser:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+http://localhost:3000
 
-## Learn More
+🧪 Dummy Login Credentials
+Username: kminchelle
+Password: 0lelplR
 
-To learn more about Next.js, take a look at the following resources:
+🚧 Pending Improvements
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+NextAuth integration
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Dynamic product categories
 
-## Deploy on Vercel
+Better image carousel UX
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Skeleton loaders & error boundaries
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+👤 Author
+
+Harshit Rai
+
+✅ Conclusion
+
+This project demonstrates:
+
+Clean frontend architecture
+
+REST API integration
+
+Zustand-based state management
+
+Responsive UI using MUI
+
+Performance-conscious implementation
+
+
